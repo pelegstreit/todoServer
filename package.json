@@ -2,9 +2,9 @@
   "name": "todo-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "todoapi.mjs",
   "scripts": {
-    "dev": "nodemon -r dotenv/config todoapi.mjs"
+    "dev": "nodemon -r dotenv/config"
   },
   "keywords": [],
   "author": "Peleg Streit",

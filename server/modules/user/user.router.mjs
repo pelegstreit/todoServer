@@ -1,6 +1,6 @@
 import { Router } from "express";
 import userModel from "./user.model.mjs"
-import listModel from "../list/list.model.mjs";
+// import listModel from "../list/list.model.mjs";
 import express from 'express'
 import raw from '../../middleware/route.async.wrapper.mjs'
 
@@ -33,11 +33,11 @@ router.put('/:id',raw(async (req,res)=>{
     const user= await userModel.findByIdAndUpdate(req.params.id,req.body,{
         new:true, upsert:false
     });
-    for (let listID of req.body.list){
-        let list = await listModel.findById(listID);
-        list.user = user;
-        await list.save
-    }
+    // for (let listID of req.body.list){
+    //     let list = await listModel.findById(listID);
+    //     list.user = user;
+    //     await list.save
+    // }
     res.status(200).json(user)
 }))
 
@@ -47,11 +47,11 @@ router.patch('/:id', raw(async (req,res)=>{
     const user= await userModel.findByIdAndUpdate(req.params.id,req.body,{
         new:true, upsert:false
     });
-    for (let listID of req.body.list){
-        let list = await listModel.findById(listID);
-        list.user = user;
-        await list.save
-    }
+    // for (let listID of req.body.list){
+    //     let list = await listModel.findById(listID);
+    //     list.user = user;
+    //     await list.save
+    // }
     res.status(200).json(user)
 }))
 
@@ -59,10 +59,10 @@ router.patch('/:id', raw(async (req,res)=>{
 //delete user
 router.delete('/:id',raw(async (req,res)=>{
     const user= await userModel.findByIdAndRemove(req.params.id);
-    for (let listID of req.body.list){
-        let list = await listModel.findByIdAndRemove(listID);
-        await list.save
-    }
+    // for (let listID of req.body.list){
+    //     let list = await listModel.findByIdAndRemove(listID);
+    //     await list.save
+    // }
     res.status(200).json(user);
 }))
 
